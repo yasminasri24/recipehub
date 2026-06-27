@@ -1,0 +1,16 @@
+# Laravel
+recipehub-backend/vendor/
+recipehub-backend/node-modules/
+recipehub-backend/.env
+recipehub-backend/storage/*.key
+
+# React
+recipehub-frontend/node-modules/
+recipehub-frontend/dist/
+
+# VS Code
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db

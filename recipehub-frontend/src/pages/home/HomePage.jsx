@@ -1,26 +1,20 @@
 import MainLayout from "../../components/layout/MainLayout";
 
+import HeroSection from "../../components/home/HeroSection";
+import TrendingSection from "../../components/home/TrendingSection";
+import CategorySection from "../../components/home/CategorySection";
+
 function HomePage() {
 
     return (
 
         <MainLayout>
 
-            <div className="text-center py-20">
+            <HeroSection />
 
-                <h1 className="text-5xl font-bold">
+            <TrendingSection />
 
-                    Welcome to RecipeHub
-
-                </h1>
-
-                <p className="mt-4 text-gray-500">
-
-                    Discover, Cook and Share Amazing Recipes.
-
-                </p>
-
-            </div>
+            <CategorySection />
 
         </MainLayout>
 

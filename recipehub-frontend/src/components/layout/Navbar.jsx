@@ -1,34 +1,45 @@
 import { Link } from "react-router-dom";
+import Button from "../common/Button";
+import Logo from "../common/Logo";
 
 function Navbar() {
     return (
-        <nav className="bg-white shadow-md">
+        <nav className="bg-white border-b sticky top-0 z-50">
 
-            <div className="max-w-7xl mx-auto px-6 h-16 flex justify-between items-center">
+            <div className="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
 
-                <Link
-                    to="/"
-                    className="text-2xl font-bold text-green-600"
-                >
-                    RecipeHub
-                </Link>
+                <Logo />
 
-                <div className="flex gap-6">
+                <div className="hidden md:flex gap-8">
 
-                    <Link to="/">
-                        Home
-                    </Link>
+                    <Link to="/">Home</Link>
 
-                    <Link to="/recipes">
-                        Recipes
-                    </Link>
+                    <Link to="/recipes">Recipes</Link>
+
+                    <Link to="/about">About</Link>
+
+                </div>
+
+                <div className="flex gap-3">
 
                     <Link to="/login">
-                        Login
+
+                        <Button variant="secondary">
+
+                            Login
+
+                        </Button>
+
                     </Link>
 
                     <Link to="/register">
-                        Register
+
+                        <Button>
+
+                            Register
+
+                        </Button>
+
                     </Link>
 
                 </div>

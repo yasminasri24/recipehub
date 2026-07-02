@@ -1,53 +1,143 @@
 import Button from "../common/Button";
+import Container from "../common/Container";
+import SearchBar from "../common/SearchBar";
 
 function HeroSection() {
     return (
         <section className="bg-gradient-to-r from-green-50 to-green-100">
+            <Container>
 
-            <div className="max-w-7xl mx-auto px-6 py-24">
+                <div className="grid lg:grid-cols-2 gap-16 items-center">
 
-                <div className="max-w-3xl">
+                    {/* Left Content */}
+                    <div>
 
-                    <p className="text-green-600 font-semibold mb-3">
-                        Welcome to RecipeHub
-                    </p>
+                        <p className="text-green-600 font-semibold mb-3">
+                            Welcome to RecipeHub 👋
+                        </p>
 
-                    <h1 className="text-6xl font-bold leading-tight text-slate-800">
+                        <h1 className="text-5xl lg:text-6xl font-bold leading-tight text-slate-800">
 
-                        Discover,
-                        Cook &
-                        Share
-                        Amazing Recipes
+                            Discover,
+                            <br />
 
-                    </h1>
+                            Cook &
+                            <br />
 
-                    <p className="text-gray-600 mt-6 text-lg">
+                            Share Amazing Recipes
 
-                        Join thousands of home cooks.
-                        Find recipes, save your favourites
-                        and inspire others with your own dishes.
+                        </h1>
 
-                    </p>
+                        <p className="text-gray-600 text-lg mt-6 leading-8">
 
-                    <div className="flex gap-4 mt-10">
+                            Find thousands of delicious recipes shared by
+                            home cooks around the world. Save your favourite
+                            recipes, share your own creations and cook
+                            something amazing today.
 
-                        <Button>
+                        </p>
 
-                            Browse Recipes
+                        {/* Search Bar */}
 
-                        </Button>
+                        <div className="mt-8">
+                            <SearchBar />
+                        </div>
 
-                        <Button variant="secondary">
+                        {/* Popular Tags */}
 
-                            Share Recipe
+                        <div className="flex flex-wrap gap-3 mt-6">
 
-                        </Button>
+                            <span className="bg-green-100 text-green-700 px-4 py-2 rounded-full cursor-pointer hover:bg-green-200 transition">
+                                Healthy
+                            </span>
+
+                            <span className="bg-green-100 text-green-700 px-4 py-2 rounded-full cursor-pointer hover:bg-green-200 transition">
+                                Chicken
+                            </span>
+
+                            <span className="bg-green-100 text-green-700 px-4 py-2 rounded-full cursor-pointer hover:bg-green-200 transition">
+                                Pasta
+                            </span>
+
+                            <span className="bg-green-100 text-green-700 px-4 py-2 rounded-full cursor-pointer hover:bg-green-200 transition">
+                                Dessert
+                            </span>
+
+                        </div>
+
+                        {/* CTA Buttons */}
+
+                        <div className="flex flex-wrap gap-4 mt-8">
+
+                            <Button>
+                                Browse Recipes
+                            </Button>
+
+                            <Button variant="secondary">
+                                Share Recipe
+                            </Button>
+
+                        </div>
+
+                        {/* Statistics */}
+
+                        <div className="flex flex-wrap gap-10 mt-14">
+
+                            <div>
+
+                                <h2 className="text-3xl font-bold text-slate-800">
+                                    2,000+
+                                </h2>
+
+                                <p className="text-gray-500">
+                                    Recipes
+                                </p>
+
+                            </div>
+
+                            <div>
+
+                                <h2 className="text-3xl font-bold text-slate-800">
+                                    500+
+                                </h2>
+
+                                <p className="text-gray-500">
+                                    Active Cooks
+                                </p>
+
+                            </div>
+
+                            <div>
+
+                                <h2 className="text-3xl font-bold text-slate-800">
+                                    8,000+
+                                </h2>
+
+                                <p className="text-gray-500">
+                                    Reviews
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    {/* Right Content */}
+
+                    <div className="flex justify-center">
+
+                        <img
+                            src="https://placehold.co/700x700"
+                            alt="RecipeHub Hero"
+                            className="w-full max-w-xl rounded-3xl shadow-2xl"
+                        />
 
                     </div>
 
                 </div>
 
-            </div>
+            </Container>
 
         </section>
     );

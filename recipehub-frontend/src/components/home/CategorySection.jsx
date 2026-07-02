@@ -12,7 +12,11 @@ function CategorySection() {
 
                 <SectionHeader
                     title="🍽 Browse Categories"
-                    subtitle="Find recipes for every meal."
+                    subtitle="Explore recipes by category."
+                    action={{
+                        label: "View All",
+                        link: "/categories"
+                    }}
                 />
 
                 <div

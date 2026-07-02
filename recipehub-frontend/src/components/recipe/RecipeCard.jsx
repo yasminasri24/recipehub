@@ -1,53 +1,50 @@
 import Card from "../common/Card";
 
-function RecipeCard() {
+function RecipeCard({ recipe }) {
 
     return (
 
         <Card>
 
-            <div className="overflow-hidden rounded-xl">
+            <img
+                src={recipe.image}
+                alt={recipe.title}
+                className="w-full h-52 object-cover rounded-xl"
+            />
 
-                <img
-                    src="https://placehold.co/600x400"
-                    alt="Recipe"
-                    className="
-                        w-full
-                        h-52
-                        object-cover
-                        transition-transform
-                        duration-300
-                        hover:scale-105
-                    "
-                />
+            <div className="mt-4">
 
-            </div>
+                <h3 className="text-xl font-bold">
 
-            <div className="mt-5">
-
-                <h3 className="font-bold text-xl">
-
-                    Chicken Teriyaki
+                    {recipe.title}
 
                 </h3>
 
                 <p className="text-gray-500 mt-2">
 
-                    Easy • 25 mins • 420 kcal
+                    {recipe.difficulty}
+
+                    {" • "}
+
+                    {recipe.time}
+
+                    {" • "}
+
+                    {recipe.calories} kcal
 
                 </p>
 
-                <div className="flex justify-between mt-5">
+                <div className="flex justify-between mt-4">
 
                     <span>
 
-                        ⭐ 4.9
+                        ⭐ {recipe.rating}
 
                     </span>
 
                     <span>
 
-                        ❤️ 245
+                        ❤️ {recipe.favorites}
 
                     </span>
 

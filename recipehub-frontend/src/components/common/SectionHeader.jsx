@@ -21,7 +21,7 @@ function SectionHeader({
             {action && (
                 <Link
                     to={action.link}
-                    className="text-green-600 font-semibold hover:text-green-700 transition"
+                    className="text-green-600 font-semibold hover:underline"
                 >
                     {action.label} →
                 </Link>

@@ -1,52 +1,91 @@
 import { Link } from "react-router-dom";
-import Button from "../common/Button";
+import { FaHeart, FaUserCircle } from "react-icons/fa";
 import Logo from "../common/Logo";
+import Button from "../common/Button";
 
 function Navbar() {
     return (
-        <nav className="bg-white border-b sticky top-0 z-50">
+        <header className="bg-white shadow-sm sticky top-0 z-50">
 
-            <div className="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <div className="max-w-7xl mx-auto px-6">
 
-                <Logo />
+                <div className="flex items-center justify-between h-20">
 
-                <div className="hidden md:flex gap-8">
+                    {/* Logo */}
 
-                    <Link to="/">Home</Link>
+                    <Logo />
 
-                    <Link to="/recipes">Recipes</Link>
+                    {/* Navigation */}
 
-                    <Link to="/about">About</Link>
+                    <nav className="hidden md:flex items-center gap-8">
 
-                </div>
+                        <Link
+                            to="/"
+                            className="text-gray-700 hover:text-green-600 font-medium transition"
+                        >
+                            Home
+                        </Link>
 
-                <div className="flex gap-3">
+                        <Link
+                            to="/recipes"
+                            className="text-gray-700 hover:text-green-600 font-medium transition"
+                        >
+                            Recipes
+                        </Link>
 
-                    <Link to="/login">
+                        <Link
+                            to="/categories"
+                            className="text-gray-700 hover:text-green-600 font-medium transition"
+                        >
+                            Categories
+                        </Link>
 
-                        <Button variant="secondary">
+                        <Link
+                            to="/about"
+                            className="text-gray-700 hover:text-green-600 font-medium transition"
+                        >
+                            About
+                        </Link>
 
-                            Login
+                    </nav>
 
-                        </Button>
+                    {/* Right Side */}
 
-                    </Link>
+                    <div className="flex items-center gap-5">
 
-                    <Link to="/register">
+                        <button
+                            className="
+                                text-gray-600
+                                hover:text-red-500
+                                transition
+                            "
+                        >
+                            <FaHeart size={20} />
+                        </button>
 
-                        <Button>
+                        <Link
+                            to="/login"
+                        >
+                            <Button variant="secondary">
+                                Login
+                            </Button>
+                        </Link>
 
-                            Register
+                        <Link
+                            to="/register"
+                        >
+                            <Button>
+                                Sign Up
+                            </Button>
+                        </Link>
 
-                        </Button>
-
-                    </Link>
+                    </div>
 
                 </div>
 
             </div>
 
-        </nav>
+        </header>
     );
 }
 

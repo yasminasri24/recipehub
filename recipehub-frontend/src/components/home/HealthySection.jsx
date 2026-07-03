@@ -16,7 +16,7 @@ function HealthySection() {
                     subtitle="Nutritious recipes for a healthier lifestyle."
                     action={{
                         label: "View All",
-                        link: "/recipes"
+                        link: "/recipes",
                     }}
                 />
 

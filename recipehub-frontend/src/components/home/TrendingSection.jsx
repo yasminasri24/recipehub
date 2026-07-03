@@ -13,10 +13,10 @@ function TrendingSection() {
 
                 <SectionHeader
                     title="🔥 Trending Recipes"
-                    subtitle="Discover the most popular recipes shared by the community."
+                    subtitle="Discover the most popular recipes shared by our community."
                     action={{
                         label: "View All",
-                        link: "/recipes"
+                        link: "/recipes",
                     }}
                 />
 

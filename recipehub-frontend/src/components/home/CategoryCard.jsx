@@ -4,35 +4,42 @@ function CategoryCard({
 
     title,
 
+    recipes
+
 }) {
 
     return (
 
         <div
             className="
-                min-w-40
-                bg-white
-                rounded-2xl
-                shadow
-                p-8
-                hover:shadow-lg
-                transition
-                cursor-pointer
-                text-center
+            min-w-52
+            bg-white
+            rounded-3xl
+            p-8
+            shadow
+            hover:-translate-y-2
+            transition
+            cursor-pointer
             "
         >
 
-            <div className="text-5xl">
+            <div className="text-6xl">
 
                 {emoji}
 
             </div>
 
-            <h3 className="font-semibold mt-4">
+            <h3 className="font-bold text-xl mt-5">
 
                 {title}
 
             </h3>
+
+            <p className="text-gray-500 mt-2">
+
+                {recipes} Recipes
+
+            </p>
 
         </div>
 

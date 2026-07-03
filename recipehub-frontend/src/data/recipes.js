@@ -3,6 +3,7 @@ const recipes = [
     {
         id: 1,
         title: "Chicken Teriyaki",
+        author: "Min",
         category: "Dinner",
         difficulty: "Easy",
         time: "25 mins",
@@ -15,6 +16,7 @@ const recipes = [
     {
         id: 2,
         title: "Creamy Carbonara",
+        author: "Min",
         category: "Pasta",
         difficulty: "Medium",
         time: "35 mins",
@@ -27,6 +29,7 @@ const recipes = [
     {
         id: 3,
         title: "Healthy Salad",
+        author: "Min",
         category: "Healthy",
         difficulty: "Easy",
         time: "15 mins",
@@ -39,6 +42,7 @@ const recipes = [
     {
         id: 4,
         title: "Pancakes",
+        author: "Min",
         category: "Breakfast",
         difficulty: "Easy",
         time: "20 mins",

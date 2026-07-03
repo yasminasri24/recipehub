@@ -16,7 +16,7 @@ function QuickEasySection() {
                     subtitle="Recipes ready in under 30 minutes."
                     action={{
                         label: "View All",
-                        link: "/recipes"
+                        link: "/recipes",
                     }}
                 />
 

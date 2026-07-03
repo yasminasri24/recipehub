@@ -15,7 +15,7 @@ function CategorySection() {
                     subtitle="Explore recipes by category."
                     action={{
                         label: "View All",
-                        link: "/categories"
+                        link: "/recipes",
                     }}
                 />
 
@@ -28,12 +28,12 @@ function CategorySection() {
                     "
                 >
 
-                    <CategoryCard emoji="🥞" title="Breakfast" />
-                    <CategoryCard emoji="🍛" title="Lunch" />
-                    <CategoryCard emoji="🍗" title="Dinner" />
-                    <CategoryCard emoji="🍰" title="Dessert" />
-                    <CategoryCard emoji="🥤" title="Drinks" />
-                    <CategoryCard emoji="🍟" title="Snacks" />
+                    <CategoryCard emoji="🥞" title="Breakfast" recipes={124} />
+                    <CategoryCard emoji="🍛" title="Lunch" recipes={98} />
+                    <CategoryCard emoji="🍗" title="Dinner" recipes={156} />
+                    <CategoryCard emoji="🍰" title="Dessert" recipes={87} />
+                    <CategoryCard emoji="🥤" title="Drinks" recipes={65} />
+                    <CategoryCard emoji="🍟" title="Snacks" recipes={43} />
 
                 </div>
 

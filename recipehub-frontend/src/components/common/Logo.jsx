@@ -6,19 +6,22 @@ function Logo() {
             to="/"
             className="flex items-center gap-2"
         >
-            <span className="text-3xl">
+            <span className="text-4xl">
                 🍳
             </span>
 
-            <span
-                className="
-                text-2xl
-                font-bold
-                text-green-600
-            "
-            >
-                RecipeHub
-            </span>
+            <div>
+
+                <h1 className="text-2xl font-bold text-green-600">
+                    RecipeHub
+                </h1>
+
+                <p className="text-xs text-gray-500">
+                    Cook • Share • Inspire
+                </p>
+
+            </div>
+
         </Link>
     );
 }

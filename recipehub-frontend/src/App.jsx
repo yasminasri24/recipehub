@@ -1,12 +1,34 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
-import AppRoutes from './routers/AppRoutes';
+import { Routes, Route } from "react-router-dom";
+
+import HomePage from "./pages/Home/HomePage";
+import LoginPage from "./pages/Auth/LoginPage";
+import RegisterPage from "./pages/Auth/RegisterPage";
 
 function App() {
-    return <AppRoutes />;
+
+    return (
+
+        <Routes>
+
+            <Route
+                path="/"
+                element={<HomePage />}
+            />
+
+            <Route
+                path="/login"
+                element={<LoginPage />}
+            />
+
+            <Route
+                path="/register"
+                element={<RegisterPage />}
+            />
+
+        </Routes>
+
+    );
+
 }
 
 export default App;

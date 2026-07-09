@@ -18,7 +18,23 @@ return Application::configure(basePath: dirname(__DIR__))
 
     })
     ->withExceptions(function (Exceptions $exceptions): void {
+
         $exceptions->shouldRenderJsonWhen(
             fn (Request $request) => $request->is('api/*'),
         );
-    })->create();
+
+        $exceptions->render(function (
+            \Illuminate\Auth\AuthenticationException $e,
+            Request $request
+        ) {
+
+            return response()->json([
+                'success' => false,
+                'message' => 'Invalid email or password.',
+            ], 401);
+
+        });
+
+    })
+
+    ->create();

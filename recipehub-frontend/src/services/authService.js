@@ -1,21 +1,34 @@
 import api from "./api";
 
-// Login user
-export const login = (data) => {
-    return api.post("/login", data);
+/**
+ * Get CSRF cookie before authentication requests.
+ */
+const getCsrfCookie = async () => {
+    return api.get("/sanctum/csrf-cookie");
 };
 
-// Register user
-export const register = (data) => {
-    return api.post("/register", data);
+/**
+ * Register
+ */
+export const register = async (data) => {
+    await getCsrfCookie();
+
+    return api.post("/api/register", data);
 };
 
-// Logout user
+/**
+ * Login
+ */
+export const login = async (data) => {
+    await getCsrfCookie();
+
+    return api.post("/api/login", data);
+};
+
 export const logout = () => {
-    return api.post("/logout");
+    return api.post("/api/logout");
 };
 
-// Get authenticated user
 export const getUser = () => {
-    return api.get("/user");
+    return api.get("/api/user");
 };

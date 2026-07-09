@@ -2,13 +2,12 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class RegisterRequest extends FormRequest
 {
     /**
-     * Determine if the user is authorized to make this request.
+     * Determine if the user is authorized.
      */
     public function authorize(): bool
     {
@@ -16,19 +15,17 @@ class RegisterRequest extends FormRequest
     }
 
     /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, ValidationRule|array<mixed>|string>
+     * Validation rules.
      */
     public function rules(): array
     {
         return [
 
-            'name' => ['required','string','max:255'],
+            'name' => ['required', 'string', 'max:255'],
 
-            'username' => ['required','string','unique:users'],
+            'username' => ['required', 'string', 'max:100', 'unique:users'],
 
-            'email' => ['required','email','unique:users'],
+            'email' => ['required', 'email', 'unique:users'],
 
             'password' => [
                 'required',

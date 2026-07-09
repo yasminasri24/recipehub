@@ -24,9 +24,21 @@ function LoginPage() {
     };
 
     const submit = async (e) => {
+
         e.preventDefault();
-        await handleLogin(form);
-        navigate("/");
+
+        try {
+
+            await handleLogin(form);
+
+            navigate("/");
+
+        } catch (error) {
+
+            console.log(error.response?.data);
+
+        }
+
     };
 
     return (

@@ -2,8 +2,17 @@ import { Link } from "react-router-dom";
 import { FaHeart, FaUserCircle } from "react-icons/fa";
 import Logo from "../common/Logo";
 import Button from "../common/Button";
+import { useAuth } from "../../contexts/AuthContext";
+import UserMenu from "./UserMenu";
 
 function Navbar() {
+
+    const { loading, isAuthenticated, user } = useAuth();
+
+    if (loading) {
+        return null;
+    }
+
     return (
         <header className="bg-white shadow-sm sticky top-0 z-50">
 
@@ -51,33 +60,31 @@ function Navbar() {
 
                     {/* Right Side */}
 
-                    <div className="flex items-center gap-5">
+                    <div className="flex items-center gap-4">
 
-                        <button
-                            className="
-                                text-gray-600
-                                hover:text-red-500
-                                transition
-                            "
-                        >
-                            <FaHeart size={20} />
-                        </button>
+                        {isAuthenticated ? (
 
-                        <Link
-                            to="/login"
-                        >
-                            <Button variant="secondary">
-                                Login
-                            </Button>
-                        </Link>
+                            <UserMenu />
 
-                        <Link
-                            to="/register"
-                        >
-                            <Button>
-                                Sign Up
-                            </Button>
-                        </Link>
+                        ) : (
+
+                            <>
+                                <Link
+                                    to="/login"
+                                    className="font-medium"
+                                >
+                                    Login
+                                </Link>
+
+                                <Link
+                                    to="/register"
+                                    className="bg-green-600 text-white px-5 py-2 rounded-full"
+                                >
+                                    Sign Up
+                                </Link>
+                            </>
+
+                        )}
 
                     </div>
 

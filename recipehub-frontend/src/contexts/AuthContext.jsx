@@ -7,6 +7,7 @@ export function AuthProvider({ children }) {
 
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     // load user on app start
     useEffect(() => {
@@ -16,7 +17,7 @@ export function AuthProvider({ children }) {
     const fetchUser = async () => {
         try {
             const res = await getUser();
-            setUser(res.data);
+            setUser(res.data.data);
         } catch (error) {
             setUser(null);
         } finally {
@@ -25,18 +26,55 @@ export function AuthProvider({ children }) {
     };
 
     const handleLogin = async (data) => {
-        await login(data);
-        await fetchUser();
+        try {
+
+            setError(null);
+
+            await login(data);
+
+            await fetchUser();
+
+        } catch (err) {
+
+            setError(
+                err.response?.data?.message ??
+                "Login failed."
+            );
+
+            throw err;
+        }
     };
 
     const handleRegister = async (data) => {
-        await register(data);
-        await fetchUser();
+        try {
+
+            setError(null);
+
+            await register(data);
+
+            await fetchUser();
+
+        } catch (err) {
+
+            setError(
+                err.response?.data?.message ??
+                "Registration failed."
+            );
+
+            throw err;
+        }
     };
 
     const handleLogout = async () => {
-        await logout();
-        setUser(null);
+        try {
+            await logout();
+
+            setUser(null);
+            setError(null);
+
+        } catch (err) {
+            console.error(err);
+        }
     };
 
     return (
@@ -44,6 +82,7 @@ export function AuthProvider({ children }) {
             value={{
                 user,
                 loading,
+                error,
                 handleLogin,
                 handleRegister,
                 handleLogout,
@@ -55,4 +94,8 @@ export function AuthProvider({ children }) {
     );
 }
 
-export const useAuth = () => useContext(AuthContext);
+function useAuth() {
+    return useContext(AuthContext);
+}
+
+export { useAuth };

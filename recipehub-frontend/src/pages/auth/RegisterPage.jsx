@@ -27,9 +27,21 @@ function RegisterPage() {
     };
 
     const submit = async (e) => {
+
         e.preventDefault();
-        await handleRegister(form);
-        navigate("/");
+
+        try {
+
+            await handleRegister(form);
+
+            navigate("/");
+
+        } catch (error) {
+
+            console.log(error.response?.data);
+
+        }
+
     };
 
     return (

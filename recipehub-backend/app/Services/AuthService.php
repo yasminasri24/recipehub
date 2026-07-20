@@ -3,61 +3,79 @@
 namespace App\Services;
 
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\AuthenticationException;
 
 class AuthService
 {
     /**
-     * Register a new user.
+     * Register user
      */
-    public function register(array $data): User
+    public function register(array $data): array
     {
         $user = User::create([
             'name' => $data['name'],
             'username' => $data['username'],
             'email' => $data['email'],
-            'password' => $data['password'],
+            'password' => Hash::make($data['password']),
         ]);
 
-        Auth::login($user);
+        $token = $user->createToken('recipehub-token')
+                      ->plainTextToken;
 
-        request()->session()->regenerate();
-
-        return $user;
+        return [
+            'user' => $user,
+            'token' => $token,
+        ];
     }
 
+
     /**
-     * Login user.
+     * Login user
      */
-    public function login(array $credentials): User
+    public function login(array $credentials): array
     {
-        if (! Auth::attempt($credentials)) {
-            throw new AuthenticationException('Invalid email or password.');
+        $user = User::where('email', $credentials['email'])
+                    ->first();
+
+
+        if (! $user || ! Hash::check(
+            $credentials['password'],
+            $user->password
+        )) {
+            throw new AuthenticationException(
+                'Invalid email or password.'
+            );
         }
 
-        request()->session()->regenerate();
 
-        return Auth::user();
+        $token = $user->createToken('recipehub-token')
+                      ->plainTextToken;
+
+
+        return [
+            'user' => $user,
+            'token' => $token,
+        ];
     }
 
+
     /**
-     * Logout user.
+     * Logout user
      */
     public function logout(): void
     {
-        Auth::logout();
-
-        request()->session()->invalidate();
-
-        request()->session()->regenerateToken();
+        request()->user()
+            ->currentAccessToken()
+            ->delete();
     }
 
+
     /**
-     * Get authenticated user.
+     * Get authenticated user
      */
     public function user(): ?User
     {
-        return Auth::user();
+        return request()->user();
     }
 }

@@ -3,16 +3,15 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Api\BaseController;
-use App\Models\Category;
+use App\Models\Tag;
 
-class CategoryController extends BaseController
+class TagController extends BaseController
 {
     public function index()
     {
         return $this->success(
-            'Categories retrieved successfully.',
-            Category::orderBy('name')->get()
+            'Tags retrieved successfully.',
+            Tag::orderBy('name')->get()
         );
     }
 }
-

@@ -43,10 +43,29 @@ function Navbar() {
                         </Link>
 
                         <Link
+                            to="/favorites"
+                        >
+                            Favorites
+                        </Link>
+
+                        <Link
                             to="/categories"
                             className="text-gray-700 hover:text-green-600 font-medium transition"
                         >
                             Categories
+                        </Link>
+
+                        <Link
+                            to="/recipes/create"
+                            className="
+                                bg-orange-500
+                                text-white
+                                px-4
+                                py-2
+                                rounded-lg
+                            "
+                        >
+                            Create Recipe
                         </Link>
 
                         <Link

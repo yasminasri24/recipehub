@@ -1,34 +1,67 @@
 import api from "./api";
 
-/**
- * Get CSRF cookie before authentication requests.
- */
-const getCsrfCookie = async () => {
-    return api.get("/sanctum/csrf-cookie");
-};
 
-/**
- * Register
- */
-export const register = async (data) => {
-    await getCsrfCookie();
-
-    return api.post("/api/register", data);
-};
-
-/**
- * Login
- */
+// Login
 export const login = async (data) => {
-    await getCsrfCookie();
 
-    return api.post("/api/login", data);
+    const response = await api.post(
+        "/login",
+        data
+    );
+
+
+    localStorage.setItem(
+        "token",
+        response.data.token
+    );
+
+
+    return response;
+
 };
 
-export const logout = () => {
-    return api.post("/api/logout");
+
+
+// Register
+export const register = async (data) => {
+
+    const response = await api.post(
+        "/register",
+        data
+    );
+
+
+    localStorage.setItem(
+        "token",
+        response.data.token
+    );
+
+
+    return response;
+
 };
 
+
+
+// Logout
+export const logout = async () => {
+
+    const response = await api.post(
+        "/logout"
+    );
+    
+    localStorage.removeItem(
+        "token"
+    );
+
+    return response;
+
+};
+
+
+// Get user
 export const getUser = () => {
-    return api.get("/api/user");
+
+    return api.get("/user");
+
 };

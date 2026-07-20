@@ -15,34 +15,39 @@ export function AuthProvider({ children }) {
     }, []);
 
     const fetchUser = async () => {
+
+        const token = localStorage.getItem("token");
+        if(!token){
+            setUser(null);
+            setLoading(false);
+            return;
+        }
+
         try {
             const res = await getUser();
             setUser(res.data.data);
-        } catch (error) {
+        }
+        catch(error){
+            localStorage.removeItem("token");
             setUser(null);
-        } finally {
+        }
+
+        finally{
             setLoading(false);
         }
+
     };
 
     const handleLogin = async (data) => {
-        try {
 
-            setError(null);
+        const response = await login(data);
 
-            await login(data);
+        localStorage.setItem(
+            "token",
+            response.data.data.token
+        );
 
-            await fetchUser();
-
-        } catch (err) {
-
-            setError(
-                err.response?.data?.message ??
-                "Login failed."
-            );
-
-            throw err;
-        }
+        await fetchUser();
     };
 
     const handleRegister = async (data) => {
@@ -68,13 +73,21 @@ export function AuthProvider({ children }) {
     const handleLogout = async () => {
         try {
             await logout();
-
-            setUser(null);
-            setError(null);
-
-        } catch (err) {
-            console.error(err);
         }
+        catch(error){
+
+            console.log(
+                "Logout API failed",
+                error
+            );
+
+        }
+
+        finally{
+            localStorage.removeItem("token");
+            setUser(null);
+        }
+
     };
 
     return (

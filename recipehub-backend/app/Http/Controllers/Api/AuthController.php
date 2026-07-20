@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Traits\ApiResponse;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
@@ -10,9 +9,8 @@ use App\Http\Resources\UserResource;
 use App\Services\AuthService;
 use Illuminate\Http\JsonResponse;
 
-class AuthController extends Controller
+class AuthController extends BaseController
 {
-    use ApiResponse;
 
     public function __construct(
         protected AuthService $authService
@@ -24,13 +22,17 @@ class AuthController extends Controller
      */
     public function register(RegisterRequest $request): JsonResponse
     {
-        $user = $this->authService->register(
+        $result = $this->authService->register(
             $request->validated()
         );
 
+
         return $this->success(
             'Registration successful.',
-            new UserResource($user),
+            [
+                'user' => new UserResource($result['user']),
+                'token' => $result['token']
+            ],
             201
         );
     }
@@ -40,13 +42,17 @@ class AuthController extends Controller
      */
     public function login(LoginRequest $request): JsonResponse
     {
-        $user = $this->authService->login(
+        $result = $this->authService->login(
             $request->validated()
         );
 
+
         return $this->success(
             'Login successful.',
-            new UserResource($user)
+            [
+                'user' => new UserResource($result['user']),
+                'token' => $result['token']
+            ]
         );
     }
 

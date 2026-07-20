@@ -1,101 +1,113 @@
-import Card from "../common/Card";
-import Button from "../common/Button";
-import { FaHeart } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { FaClock, FaStar, FaHeart } from "react-icons/fa";
+import FavoriteButton from "./FavoriteButton";
 
 function RecipeCard({ recipe }) {
-
     return (
+        <div className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition duration-300">
 
-        <Card className="
-            hover:-translate-y-2
-            hover:shadow-xl
-            transition-all
-            duration-300
-            "
-        >
+            {/* Recipe Image */}
+            <img
+                src={recipe.image}
+                alt={recipe.title}
+                className="w-full h-64 object-cover rounded-xl"
+            />
+            <div className="p-5">
 
-            <div className="relative">
+                {/* Rating & Time */}
+                <div className="flex justify-between items-center text-sm text-gray-500 mb-3">
 
-                <img
-                    src={recipe.image}
-                    alt={recipe.title}
-                    className="w-full h-52 object-cover"
-                />
+                    <div className="flex items-center gap-1">
 
-                <span className="absolute top-4 left-4 bg-green-600 text-white px-3 py-1 rounded-full text-sm">
+                        <FaStar className="text-yellow-400" />
 
-                    {recipe.difficulty}
+                        <span>
+                            {recipe.average_rating ?? "0.0"}
+                        </span>
 
-                </span>
+                    </div>
 
-                <button className="absolute top-4 right-4 bg-white p-2 rounded-full shadow">
+                    <div className="flex items-center gap-1">
 
-                    <FaHeart className="text-red-500"/>
+                        <FaClock />
 
-                </button>
+                        <span>
+                            {recipe.cooking_time} mins
+                        </span>
 
-            </div>
+                    </div>
 
-            <div className="mt-5">
+                </div>
 
-                <h3 className="text-xl font-bold">
+                {/* Title */}
+                <h2 className="text-xl font-bold mb-2 line-clamp-1">
 
                     {recipe.title}
 
-                </h3>
+                </h2>
 
-                <p className="text-gray-500 mt-1">
+                {/* Description */}
+                <p className="text-gray-600 text-sm mb-4 line-clamp-2">
 
-                    By {recipe.author}
+                    {recipe.description}
 
                 </p>
 
-                <div className="flex justify-between mt-5">
+                {/* Information */}
+                <div className="flex justify-between text-sm mb-4">
 
                     <span>
 
-                        ⭐ {recipe.rating}
+                        🍽 {recipe.servings} servings
 
                     </span>
 
                     <span>
 
-                        ❤️ {recipe.favorites}
-
-                    </span>
-
-                </div>
-
-                <div className="flex justify-between text-gray-500 mt-4">
-
-                    <span>
-
-                        ⏱ {recipe.time}
-
-                    </span>
-
-                    <span>
-
-                        {recipe.calories} kcal
+                        {recipe.difficulty}
 
                     </span>
 
                 </div>
 
-                <Button
-                    className="w-full mt-6"
-                >
+                {/* Tags */}
+                <div className="flex flex-wrap gap-2 mb-5">
 
-                    View Recipe
+                    {recipe.tags?.map(tag => (
 
-                </Button>
+                        <span
+                            key={tag.id}
+                            className="bg-orange-100 text-orange-600 text-xs px-3 py-1 rounded-full"
+                        >
+
+                            {tag.name}
+
+                        </span>
+
+                    ))}
+
+                </div>
+
+                {/* Buttons */}
+                <div className="flex justify-between items-center">
+
+                    <FavoriteButton recipe={recipe} />
+
+                    <Link
+                        to={`/recipes/${recipe.id}`}
+                        className="bg-orange-500 hover:bg-orange-600 text-white px-5 py-2 rounded-xl"
+                    >
+
+                        View Recipe
+
+                    </Link>
+
+                </div>
 
             </div>
 
-        </Card>
-
+        </div>
     );
-
 }
 
 export default RecipeCard;

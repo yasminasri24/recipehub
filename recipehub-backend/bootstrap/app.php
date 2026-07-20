@@ -14,7 +14,6 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware): void {
 
-        $middleware->statefulApi();
 
     })
     ->withExceptions(function (Exceptions $exceptions): void {
@@ -23,17 +22,17 @@ return Application::configure(basePath: dirname(__DIR__))
             fn (Request $request) => $request->is('api/*'),
         );
 
-        $exceptions->render(function (
-            \Illuminate\Auth\AuthenticationException $e,
-            Request $request
-        ) {
+        // $exceptions->render(function (
+        //     \Illuminate\Auth\AuthenticationException $e,
+        //     Request $request
+        // ) {
 
-            return response()->json([
-                'success' => false,
-                'message' => 'Invalid email or password.',
-            ], 401);
+        //     return response()->json([
+        //         'success' => false,
+        //         'message' => 'Invalid email or password.',
+        //     ], 401);
 
-        });
+        // });
 
     })
 

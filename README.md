@@ -148,6 +148,8 @@ functionality, UI enhancements, and deployment updates.
 ##  Author
 
 **Nurul Yasmin**
+
 Fresh Graduate Software Engineer
+
 GitHub:
 https://github.com/yasminasri24
